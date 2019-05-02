@@ -53,9 +53,13 @@ class ContactController extends AbstractController
 
         if($formMessage->isSubmitted() && $formMessage->isValid()){
 
-            $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                    ->setUsername('melvin.cado@gmail.com')
-                    ->setPassword('zpaagkzabaaoimlv')
+            // Cela ne marce que pour une adresse gmail, sinon dirigez vous au doc suivantes : 
+            // - https://swiftmailer.symfony.com/docs/introduction.html 
+            // - https://symfony.com/doc/current/email.html
+            $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl')) 
+                
+                    ->setUsername('monAdresseMail')
+                    ->setPassword('monMotDePasse')
             ;
            
             $mailer = new Swift_Mailer($transport);
@@ -67,7 +71,16 @@ class ContactController extends AbstractController
             $mail->setFrom($message->getMail())
                 ->setTo($departement->getMailDepartement())
                 ->setSubject('Fiche Contact '.$departement->getNomDepartement() )
-                ->setBody($message->getMessage())
+                ->setBody(
+                    $this->renderView(
+                        'emails/registration.html.twig',
+                        [
+                            'nom' => $message->getNom(),
+                            'prenom' => $message->getPrenom(),
+                            'departement' => $message->getDepartement(),
+                            'message' => $message->getMessage()
+                        ]
+                    ),'text/html')
             ;
 
             $result = $mailer->send($mail);

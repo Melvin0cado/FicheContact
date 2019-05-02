@@ -15,27 +15,27 @@ class DepartementFixtures extends Fixture
 
         $direction = new Departement();
         $direction->setNomDepartement("Direction");
-        $direction->setMailDepartement("melvin.cado@gmail.com");
+        $direction->setMailDepartement("monAdresseMail");
 
         $comptable = new Departement();
         $comptable->setNomDepartement("Comptable");
-        $comptable->setMailDepartement("melvin.cado@gmail.com");
+        $comptable->setMailDepartement("monAdresseMail");
 
         $rh = new Departement();
         $rh->setNomDepartement("Ressources Humaines");
-        $rh->setMailDepartement("melvin.cado@gmail.com");
+        $rh->setMailDepartement("monAdresseMail");
 
         $marketing = new Departement();
         $marketing->setNomDepartement("Marketing");
-        $marketing->setMailDepartement("melvin.cado@gmail.com");
+        $marketing->setMailDepartement("monAdresseMail");
 
         $communication = new Departement();
         $communication->setNomDepartement("Communication");
-        $communication->setMailDepartement("melvin.cado@gmail.com");
+        $communication->setMailDepartement("monAdresseMail");
 
         $dev = new Departement();
         $dev->setNomDepartement("Developpeur");
-        $dev->setMailDepartement("melvin.cado@gmail.com");
+        $dev->setMailDepartement("monAdresseMail");
 
         $manager->persist($direction);
         $manager->persist($comptable);
