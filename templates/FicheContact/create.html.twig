@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formMessage 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Cr&eacute;ation d'un message </h1>
+
+    {{ form_start(formMessage) }}
+
+    {{ form_row(formMessage.nom, {'attr': {'placeholder': "Votre nom "}}) }}
+    {{ form_row(formMessage.prenom, {'attr': {'placeholder': "Votre prénom "}}) }}
+    {{ form_row(formMessage.mail, {'attr': {'placeholder': "Votre email "}}) }}
+    {{ form_row(formMessage.departement) }}
+    {{ form_row(formMessage.message, {'attr': {'placeholder': "Votre message "}}) }}
+
+    <button class="btn btn-success">Envoyer</button>
+
+    {{ form_end(formMessage) }}
+
+{% endblock %}
